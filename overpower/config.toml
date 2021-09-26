@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://overpower.id/"
 languageCode = "en-us"
 title = "overpower."
 theme = "hugo-winston-theme"
