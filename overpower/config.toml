@@ -14,7 +14,7 @@ paginate = 6
     min = "0.55.0"
 
 [params]
-  google_analytics_id = ""
+  google_analytics_id = "G-3LFC0S8Q64"
   twitter_handle = "@zerostaticio"
   showAuthorOnHomepage = false
   showAuthorOnPosts = true
