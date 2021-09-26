@@ -1,18 +1,18 @@
 {
   "links": [
     {
-      "name": "twitter",
-      "url": "https://twitter.com/zerostaticio",
-      "image": "images/social/twitter.svg"
+      "name": "codepen",
+      "url": "https://codepen.io/squalvj",
+      "image": "images/social/codepen.svg"
     },
     {
       "name": "github",
-      "url": "https://github.com/zerostaticthemes",
+      "url": "https://github.com/squalvj",
       "image": "images/social/github.svg"
     },
     {
       "name": "linkedin",
-      "url": "https://www.linkedin.com",
+      "url": "https://www.linkedin.com/in/aditya-wiraha-hadi-saputra-9953b3146/",
       "image": "images/social/linkedin.svg"
     }
   ]
