@@ -14,10 +14,7 @@ body, html {
 
 ol, ul {
   margin: 0;
-  padding: 0;
-  list-style: none; }
-  ol li, ul li {
-    list-style: none; }
+  padding: 0; }
 
 h1, h2, h3 {
   margin-top: 20px;
@@ -100,11 +97,7 @@ p {
 ol,
 ul {
   margin: 0;
-  padding: 0;
-  list-style: none; }
-  ol li,
-  ul li {
-    list-style: none; }
+  padding: 0; }
 
 .content {
   font-size: 18px; }
@@ -116,10 +109,13 @@ ul {
     margin-bottom: 20px; }
   .content h1 {
     font-size: 40px;
-    line-height: 1.6;
+    line-height: 1.2;
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 20px; }
+    @media (min-width: 400px) {
+      .content h1 {
+        line-height: 1.6; } }
     .content h1:first-of-type {
       margin-top: 0; }
   .content h2 {
@@ -142,24 +138,16 @@ ul {
     margin-bottom: 20px; }
   .content ul,
   .content ol {
-    margin-left: 0;
+    margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
-    list-style: disc; }
+    list-style: auto; }
     .content ul li,
     .content ol li {
       font-size: 18px;
       line-height: 20px;
       margin-bottom: 10px;
       margin-left: 0; }
-      @media (min-width: 767px) {
-        .content ul li,
-        .content ol li {
-          margin-left: 20px; } }
-    @media (min-width: 767px) {
-      .content ul,
-      .content ol {
-        margin-left: 20px; } }
   .content a {
     text-decoration: underline; }
   .content blockquote {
@@ -203,8 +191,8 @@ ul {
 .intro {
   margin-bottom: 60px; }
   .intro h1 {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 38px;
+    line-height: 50px;
     margin-top: 0;
     margin-bottom: 30px; }
     @media (min-width: 767px) {
@@ -599,10 +587,6 @@ body {
   @media (min-width: 767px) {
     body {
       padding: 50px; } }
-  body.frame {
-    min-height: 100vh;
-    border: 18px solid white; }
-
 .wrapper {
   max-width: 1000px;
   margin: 0 auto; }
