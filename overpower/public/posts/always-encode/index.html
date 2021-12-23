@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Always Encode / Decode Query String in URL - overpower.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://overpower.id/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.cb5805b61d2688b5b38a8fdc34d94fe76f1a8892a69eb7b455f58051f7f93fba.css">
+  
+
+  
+    <meta name="description" content="Query strings can be very handy in web development, for example query string is very useful for adding wild card variable that we can use in our sites..."/>
+    <meta property="og:title" content="Always Encode / Decode Query String in URL"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://overpower.id/posts/always-encode/"/>
+    <meta property="og:image" content="https://overpower.id/images/lock.png"/>
+    <meta property="og:description" content="Query strings can be very handy in web development, for example query string is very useful for adding wild card variable that we can use in our sites..."/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@zerostaticio"/>
+    <meta name="twitter:creator" content="@zerostaticio"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://overpower.id/">overpower.</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+      <div class="author">
+  <img width="30" class="author-image" src="/images/author.jpg" />
+  <span class="author-name">Aditya Wiraha</span>
+  <span class="author-divider"></span>
+  <span class="author-date">September 28, 2021</span>
+</div>
+    
+    <div class="intro">
+      <h1>Always Encode / Decode Query String in URL<span class="dot">.</span></h1>
+      
+      <img src="/images/lock.png" />
+      
+    </div>
+    <div class="content">
+      <h1 id="preface">Preface</h1>
+<p>Query strings can be very handy in web development, for example query string is very useful for adding wild card variable that we can use in our sites. For example tracking UTM (Urchin Tracking Module) Parameter (<a href="http://www.example.com?utm_source=Facebook">www.example.com?utm_source=Facebook</a>) or we can passing any wildcard variable that needed for our application to produce something (<a href="http://www.example.com/pages?page=5)">www.example.com/pages?page=5)</a>.
+But in order for us to take this benefit of query strings, we have to be careful on how we used it, what i mean by &ldquo;be careful&rdquo; is, as stated here <a href="https://www.w3schools.com/tags/ref_urlencode.ASP">URL DOCS</a> we cannot put some symbol on the query string, for example we cant put &lsquo;', &lsquo;/&rsquo;, &lsquo;+&rsquo; and spaces ' &lsquo;.</p>
+<h1 id="the-truth">The Truth</h1>
+<p>URL Encoding (Percent Encoding) URLs can only be sent over the Internet using the ASCII character-set. Since URLs often contain characters outside the ASCII set, the URL has to be converted into a valid ASCII format. URL encoding replaces unsafe ASCII characters with a &ldquo;%&rdquo; followed by two hexadecimal digits.
+By this will raise a problem if you want to put value string symbol in query parameter, because most browser will automatically encode unsafe ASCII symbol.</p>
+<h1 id="lesson-learned">Lesson Learned</h1>
+<p>We recently got an issue regarding this url things, so the use case is like this:</p>
+<ol>
+<li>Site A redirect user to Site B with their name, email &amp; phone number being encrypted by AES-256 passed in query string named &lsquo;uid&rsquo; (<a href="http://www.example-b.com?uid=jasdoij812yJhshg">www.example-b.com?uid=jasdoij812yJhshg</a>)</li>
+<li>Site B look up the query string named &lsquo;uid&rsquo; and decrypt the value and auto populate to respective field such as name, email, phone number</li>
+</ol>
+<p>Since the output of encryption AES-256 is possible to produce &lsquo;+&rsquo;, &lsquo;/&rsquo;, &lsquo;\&rsquo;, when the browser open the url with such &lsquo;uid&rsquo; contain unsafe ASCII symbol, browser will automatically escape the string and Site B will get the wrong encrypted value because browser automatically encode those unsafe ASCII symbols (Heaven Forbid), so Site B is failed when decrypt the &lsquo;uid&rsquo;.</p>
+<h1 id="the-cure">The Cure</h1>
+<p>When this particular problem occur, lucky us javascript is already provide us with a function</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">YOUR_QUERY_STRING_VALUE</span><span class="p">)</span>
+</code></pre></div><p>with this function being called, it will produce encoded string that very safe to be put into url without the browser automatically escape your encrypted string :)
+You can freely put any string when you encode it before you throw that string into URL, and also dont forget that you have to decode it after you encode the string.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">YOUR_ENCRYPTED_QUERY_STRING_VALUE</span><span class="p">);</span>
+</code></pre></div><p>by encoding and decoding you also increase your site security for someone whom tries to inject anything into your query param, because you already safely decode it.</p>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+      <span class="social-icon social-icon-codepen">
+        <a href="https://codepen.io/squalvj" title="codepen" target="_blank" rel="noopener">
+          <img src="/images/social/codepen.svg" width="24" height="24" alt="codepen"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-github">
+        <a href="https://github.com/squalvj" title="github" target="_blank" rel="noopener">
+          <img src="/images/social/github.svg" width="24" height="24" alt="github"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-linkedin">
+        <a href="https://www.linkedin.com/in/aditya-wiraha-hadi-saputra-9953b3146/" title="linkedin" target="_blank" rel="noopener">
+          <img src="/images/social/linkedin.svg" width="24" height="24" alt="linkedin"/>
+        </a>
+      </span>
+    
+  </div>
+  
+</div>
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LFC0S8Q64"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3LFC0S8Q64');
+      </script>
+    
+  
+
+
+</body>
+</html>
