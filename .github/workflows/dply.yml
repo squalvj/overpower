@@ -12,4 +12,4 @@ jobs:
       - name: check dir
         run: ls -R
       - name: Deploy with rsync
-        run: rsync -avz -e 'ssh -p 65002' ./overpower ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/u1427595/public_html/
+        run: rsync -avz -e 'ssh -p 65002' ./public ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/u1427595/public_html/
