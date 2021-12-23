@@ -13,4 +13,4 @@ jobs:
         run: ls
       - name: Deploy with rsync
         working-directory: ./app
-        run: rsync -avz -e 'ssh -p 65002' ./app/overpower/public/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/u1427595/public_html/
+        run: rsync -avz -e 'ssh -p 65002' ./public/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/u1427595/public_html/
