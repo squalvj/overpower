@@ -21,4 +21,3 @@ paginate = 6
   showPostsOnHomepage = false
   addFrame = true
   addDot = true
-theme = "hugo-winston-theme"

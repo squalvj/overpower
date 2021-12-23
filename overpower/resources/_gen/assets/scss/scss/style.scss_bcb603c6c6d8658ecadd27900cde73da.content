@@ -4,7 +4,7 @@
   --font-family-mono: monospace;
   --base-color: #ffffff;
   --base-offset-color: #eaeaea;
-  --highlight-color: #7b16ff;
+  --highlight-color: #ff6b6b;
   --heading-color: #1c1b1d;
   --text-color: #4e5157; }
 
@@ -14,10 +14,7 @@ body, html {
 
 ol, ul {
   margin: 0;
-  padding: 0;
-  list-style: none; }
-  ol li, ul li {
-    list-style: none; }
+  padding: 0; }
 
 h1, h2, h3 {
   margin-top: 20px;
@@ -34,32 +31,34 @@ h1, h2, h3 {
       padding-bottom: 5px;
       margin-bottom: 40px; } }
   .header a.header-logo {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-right: 30px; }
+    font-weight: 700;
+    text-transform: lowercase;
+    margin-right: 30px;
+    font-size: 24px;
+    text-decoration: overline; }
 
-.menu-main {
-  display: none;
-  flex: 0; }
-  @media (min-width: 767px) {
-    .menu-main {
-      display: block; } }
-  .menu-main > ul {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; }
-    .menu-main > ul > li {
-      margin-right: 10px; }
-      .menu-main > ul > li > a {
-        display: inline-block;
-        text-decoration: none; }
-        .menu-main > ul > li > a:hover {
-          text-decoration: underline; }
-      .menu-main > ul > li.active > a {
-        display: inline-block;
-        font-weight: bold; }
-      .menu-main > ul > li:last-of-type {
-        margin-right: 0; }
+@media (min-width: 767px) {
+  .menu-main {
+    display: block; } }
+
+.menu-main > ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; }
+  .menu-main > ul > li {
+    margin-right: 10px; }
+    .menu-main > ul > li > a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 24px;
+      text-transform: lowercase; }
+      .menu-main > ul > li > a:hover {
+        text-decoration: underline; }
+    .menu-main > ul > li.active > a {
+      display: inline-block;
+      font-weight: bold; }
+    .menu-main > ul > li:last-of-type {
+      margin-right: 0; }
 
 .footer {
   margin-top: 30px; }
@@ -94,15 +93,6 @@ p {
   font-family: var(--font-family-paragraph);
   font-size: 18px;
   line-height: 24px; }
-
-ol,
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none; }
-  ol li,
-  ul li {
-    list-style: none; }
 
 .content {
   font-size: 18px; }
@@ -598,8 +588,7 @@ body {
     body {
       padding: 50px; } }
   body.frame {
-    min-height: 100vh;
-    border: 18px solid var(--highlight-color); }
+    min-height: 100vh; }
 
 .wrapper {
   max-width: 1000px;
