@@ -4,7 +4,7 @@
   --font-family-mono: monospace;
   --base-color: #ffffff;
   --base-offset-color: #eaeaea;
-  --highlight-color: #ff6b6b;
+  --highlight-color: #7b16ff;
   --heading-color: #1c1b1d;
   --text-color: #4e5157; }
 
@@ -14,7 +14,10 @@ body, html {
 
 ol, ul {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  list-style: none; }
+  ol li, ul li {
+    list-style: none; }
 
 h1, h2, h3 {
   margin-top: 20px;
@@ -32,15 +35,15 @@ h1, h2, h3 {
       margin-bottom: 40px; } }
   .header a.header-logo {
     font-weight: bold;
-    text-transform: lowercase;
-    margin-right: 30px;
-    font-size: 24px;
-    text-decoration: overline; }
+    text-transform: uppercase;
+    margin-right: 30px; }
 
 .menu-main {
   display: none;
-  flex: 0;
-  display: block; }
+  flex: 0; }
+  @media (min-width: 767px) {
+    .menu-main {
+      display: block; } }
   .menu-main > ul {
     display: flex;
     align-items: center;
@@ -49,9 +52,7 @@ h1, h2, h3 {
       margin-right: 10px; }
       .menu-main > ul > li > a {
         display: inline-block;
-        text-decoration: none;
-        font-size: 24px;
-        text-transform: lowercase; }
+        text-decoration: none; }
         .menu-main > ul > li > a:hover {
           text-decoration: underline; }
       .menu-main > ul > li.active > a {
@@ -97,7 +98,11 @@ p {
 ol,
 ul {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  list-style: none; }
+  ol li,
+  ul li {
+    list-style: none; }
 
 .content {
   font-size: 18px; }
@@ -109,13 +114,10 @@ ul {
     margin-bottom: 20px; }
   .content h1 {
     font-size: 40px;
-    line-height: 1.2;
+    line-height: 1.6;
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 20px; }
-    @media (min-width: 400px) {
-      .content h1 {
-        line-height: 1.6; } }
     .content h1:first-of-type {
       margin-top: 0; }
   .content h2 {
@@ -138,16 +140,24 @@ ul {
     margin-bottom: 20px; }
   .content ul,
   .content ol {
-    margin-left: 20px;
+    margin-left: 0;
     margin-top: 10px;
     margin-bottom: 20px;
-    list-style: auto; }
+    list-style: disc; }
     .content ul li,
     .content ol li {
       font-size: 18px;
       line-height: 20px;
       margin-bottom: 10px;
       margin-left: 0; }
+      @media (min-width: 767px) {
+        .content ul li,
+        .content ol li {
+          margin-left: 20px; } }
+    @media (min-width: 767px) {
+      .content ul,
+      .content ol {
+        margin-left: 20px; } }
   .content a {
     text-decoration: underline; }
   .content blockquote {
@@ -191,8 +201,8 @@ ul {
 .intro {
   margin-bottom: 60px; }
   .intro h1 {
-    font-size: 38px;
-    line-height: 50px;
+    font-size: 48px;
+    line-height: 56px;
     margin-top: 0;
     margin-bottom: 30px; }
     @media (min-width: 767px) {
@@ -587,6 +597,10 @@ body {
   @media (min-width: 767px) {
     body {
       padding: 50px; } }
+  body.frame {
+    min-height: 100vh;
+    border: 18px solid var(--highlight-color); }
+
 .wrapper {
   max-width: 1000px;
   margin: 0 auto; }
