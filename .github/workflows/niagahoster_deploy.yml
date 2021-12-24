@@ -19,6 +19,6 @@ jobs:
         with:
           hugo-version: '0.91.2'
       - name: Build
-        run: hugo --minify
+        run: cd overpower && hugo --minify
       - name: Deploy with rsync
         run: rsync -avz -e 'ssh -p 65002' ./overpower/public/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/public_html/
