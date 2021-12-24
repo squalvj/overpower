@@ -9,8 +9,9 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOST }}
-      - name: Open Web Client Directory
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: check shit out
         run: ls -la
-        working-directory: ${{ github.workspace }}/tmp
       - name: Deploy with rsync
-        run: rsync -avz -e 'ssh -p 65002' /overpower/overpower/public/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/u1427595/public_html/
+        run: rsync -avz -e 'ssh -p 65002' ./overpower/public/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/u1427595/public_html/
